@@ -1,0 +1,15 @@
+Exposure time: 0.05 s
+Gain: 7.0 dB
+Trigger source: ext
+Save folder: //ARQUS-CAM/Experiments/ytterbium174/
+Capture mode: 0
+Save enable: 1
+
+
+Available Capture modes:
+0: take a single image for every experimental shot (fluorescence imaging)
+1: take more 2 images for every experimental shot and compute OD (absorption imaging)
+
+Frames number: number of images to be averaged over (?) -> not implemented yet
+
+Save: save images (1) or don't save (0)
