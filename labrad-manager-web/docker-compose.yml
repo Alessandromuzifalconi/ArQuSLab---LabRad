@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  manager:
+    restart: always  
+    image: nelsond/scalabrad:0.8.3
+    environment:
+      - LABRADHOST=${LABRADHOST}
+      - LABRAD_TLS_REQUIRED=false
+    volumes:
+      - type: bind
+        source: ./config
+        target: /root/.labrad
+    ports:
+      - "7682:7682"
+      - "7643:7643"
+
+  labrad-web:
+    restart: always
+    build: ./labrad-web
+    depends_on:
+      - manager
+    environment:
+      - LABRADHOST=${LABRADHOST}
+      - LABRAD_TLS=off
+    ports:
+      - "7667:7667"

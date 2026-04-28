@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  labrad-manager:
+    restart: always  
+    build: ./labrad-manager
+    environment:
+      - LABRAD_TLS_REQUIRED=false
+      - LABRADPASSWORD=ytterbium171
+    volumes:
+      - type: bind
+        source: PWD/labrad-manager/volume/.labrad
+        target: /root/.labrad
+    ports:
+      - "7682:7682"
+
+  labrad-web:
+    restart: always
+    build: ./labrad-web
+    depends_on:
+      - labrad-manager
+    environment:
+      - LABRADHOST=labrad-manager
+      - LABRAD_TLS=off
+    ports:
+      - "7667:7667"
